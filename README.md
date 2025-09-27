@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/DenisAnthony871/Devops_Practice/actions/workflows/ci.yml/badge.svg)](https://github.com/DenisAnthony871/Devops_Practice/actions/workflows/ci.yml)
 
-* **Author:** YOUR_NAME
+* **Author:** Denis Anthony
 * **Date:** 2025-09-27
 
 ## Project Description
