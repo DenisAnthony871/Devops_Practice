@@ -1,6 +1,6 @@
 # Complete DevOps Pipeline Demo
 
-[![CI](https://github.com/GITHUB_USERNAME/Devops_Practice/actions/workflows/ci.yml/badge.svg)](https://github.com/GITHUB_USERNAME/Devops_Practice/actions/workflows/ci.yml)
+[![CI](https://github.com/DenisAnthony871/Devops_Practice/actions/workflows/ci.yml/badge.svg)](https://github.com/DenisAnthony871/Devops_Practice/actions/workflows/ci.yml)
 
 * **Author:** YOUR_NAME
 * **Date:** 2025-09-27
@@ -24,6 +24,7 @@ This project demonstrates a complete end-to-end DevOps pipeline including:
 5. Loki collects and aggregates logs
 
 This repository demonstrates a complete DevOps workflow including:
+
 * Version control with Git
 * Basic scripting
 * Docker containerization
@@ -55,6 +56,7 @@ This repository demonstrates a complete DevOps workflow including:
 ### 1. Development Environment
 
 #### Python Application (hello.py)
+
 ```python
 print("Hello, DevOps!")
 ```
@@ -62,6 +64,7 @@ print("Hello, DevOps!")
 ### 2. Containerization
 
 #### Docker Configuration (Dockerfile)
+
 ```dockerfile
 # Use a lightweight Python image
 FROM python:3.9-slim
@@ -79,6 +82,7 @@ CMD ["python", "hello.py"]
 ### 3. Continuous Integration
 
 #### GitHub Actions Workflow (.github/workflows/ci.yml)
+
 ```yaml
 name: Basic CI
 
@@ -99,6 +103,7 @@ jobs:
 ### 4. Container Orchestration
 
 #### Nomad Job Configuration (nomad/hello.nomad)
+
 ```hcl
 job "hello-devops-job" {
   datacenters = ["dc1"]
@@ -146,6 +151,7 @@ chmod +x scripts/sysinfo.sh
 The application is containerized using Docker. The `Dockerfile` uses a lightweight Python image and copies the script into the container.
 
 To build and run:
+
 ```bash
 # Build the Docker image
 docker build -t hello-devops .
@@ -155,6 +161,7 @@ docker run --rm hello-devops
 ```
 
 To publish to Docker Hub:
+
 ```bash
 # Log in to Docker Hub
 docker login
@@ -167,6 +174,7 @@ docker push DOCKERHUB_USERNAME/hello-devops:latest
 ## 4. CI/CD with GitHub Actions
 
 The repository uses GitHub Actions for continuous integration. On each push to main:
+
 * Checks out the code
 * Runs the Python script
 * Reports success/failure
@@ -176,6 +184,7 @@ The workflow file is located at `.github/workflows/ci.yml`
 ## 5. Nomad Deployment
 
 The application can be deployed to Nomad using the job configuration in `nomad/hello.nomad`. The job:
+
 * Uses the Docker driver
 * Runs a single instance
 * Allocates minimal resources (100MHz CPU, 64MB memory)
@@ -198,12 +207,15 @@ Note: Update the Docker image name in `nomad/hello.nomad` with your Docker Hub u
 ## 6. Monitoring with Loki
 
 This project uses Grafana Loki for log aggregation and monitoring. The setup includes:
+
 * Loki for log storage
 * Promtail for log collection
 * Docker Compose for orchestration
 
 Setup steps:
+
 1. Navigate to the monitoring directory:
+
    ```bash
    cd monitoring
    ```
@@ -213,6 +225,7 @@ Setup steps:
    * `promtail-config.yml` for log collection rules
 
 3. Start the monitoring stack:
+
    ```bash
    docker-compose up -d
    ```
