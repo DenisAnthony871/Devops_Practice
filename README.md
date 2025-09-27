@@ -41,3 +41,23 @@ nomad job status hello-devops-job
 
 Note: Make sure to update the Docker image name in `nomad/hello.nomad` with your Docker Hub username before deployment.
 
+## 5. Monitoring with Loki
+
+This project includes a logging setup using Grafana Loki and Promtail. To set up monitoring:
+
+```bash
+# Navigate to the monitoring directory
+cd monitoring
+
+# Follow setup instructions in loki_setup.txt
+cat loki_setup.txt
+
+# Start the monitoring stack
+docker-compose up -d
+```
+
+View logs using either:
+- Grafana web interface (if configured)
+- Loki's logcli tool: `logcli query '{job="containerlogs"}'`
+
+For detailed setup instructions and configuration, see [monitoring/loki_setup.txt](monitoring/loki_setup.txt).

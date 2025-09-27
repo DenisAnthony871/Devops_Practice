@@ -1,0 +1,61 @@
+# Loki Monitoring Setup
+
+This setup uses Docker Compose to run Loki (log storage) and Promtail (log forwarder) locally.
+
+## Prerequisites
+- Docker and Docker Compose installed
+- Docker application container built (hello-devops)
+
+## Setup Steps
+
+1. Create `docker-compose.yml`:
+```yaml
+version: "3"
+services:
+  loki:
+    image: grafana/loki:latest
+    ports:
+      - "3100:3100"
+  promtail:
+    image: grafana/promtail:latest
+    volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - ./promtail-config.yml:/etc/promtail/config.yml
+```
+
+2. Create `promtail-config.yml`:
+```yaml
+
+clients:
+  - url: http://loki:3100/loki/api/v1/push
+scrape_configs:
+- job_name: containers
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: containerlogs
+  pipeline_stages:
+  - docker: {}
+```
+
+3. Start the Monitoring Stack:
+```bash
+# Start Loki and Promtail
+docker-compose up -d
+```
+
+4. View Application Logs:
+```bash
+# Run the application container
+docker run --rm hello-devops
+
+# View logs using logcli (or Grafana)
+logcli query '{job="containerlogs"}'
+```
+
+## Additional Tips
+- You can view logs in real-time using: `logcli query '{job="containerlogs"}' --tail`
+- Filter logs by container name: `logcli query '{job="containerlogs"} |= "hello-devops"`
+- Install logcli: `docker pull grafana/logcli`
+- Access Loki API directly: http://localhost:3100/metrics
