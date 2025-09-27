@@ -1,0 +1,32 @@
+# Environment variables and secrets
+.env
+*.env
+.env.*
+credentials.json
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Personal configuration files
+config.local.json
+*.local.conf
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Docker credentials
+.docker/config.json
