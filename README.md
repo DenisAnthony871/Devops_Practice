@@ -24,3 +24,20 @@ docker run --rm hello-devops
 docker tag hello-devops your-username/hello-devops:latest
 docker push your-username/hello-devops:latest
 
+## 4. Nomad Deployment
+
+To deploy the application using Nomad:
+
+```bash
+# Verify the Nomad configuration
+nomad job validate nomad/hello.nomad
+
+# Deploy the job
+nomad job run nomad/hello.nomad
+
+# Check job status
+nomad job status hello-devops-job
+```
+
+Note: Make sure to update the Docker image name in `nomad/hello.nomad` with your Docker Hub username before deployment.
+
