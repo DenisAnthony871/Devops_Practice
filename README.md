@@ -1,5 +1,7 @@
 # DevOps Intern Final Assessment
 
+[![CI](https://github.com/DenisAnthony871/Devops_Practice/actions/workflows/ci.yml/badge.svg)](https://github.com/DenisAnthony871/Devops_Practice/actions/workflows/ci.yml)
+
 * **Name:** Denis Anthony
 * **Date:** 2025-09-27
 
@@ -12,8 +14,13 @@ This repository contains the final assessment project for the DevOps internship.
 To build and run this project as a Docker container:
 
 ```bash
-# Build the image
+# Build the Docker image
 docker build -t hello-devops .
 
 # Run the container
-docker run --rm hello-devops .
+docker run --rm hello-devops
+
+# Optional: Push to Docker Hub (after logging in)
+docker tag hello-devops your-username/hello-devops:latest
+docker push your-username/hello-devops:latest
+
